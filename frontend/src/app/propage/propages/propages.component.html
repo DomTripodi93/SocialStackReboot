@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <p *ngIf="propages.length < 1 && !isFetching">No Propages available!</p>
+    <ul class='list-group' *ngIf="propages.length >= 1 && !isFetching">
+      <li class=list-group-item *ngFor="let pro of propages" >
+        <div [routerLink] = "[pro.user_id]">
+          <h5>Name: {{pro.name}} </h5>
+          <h5>Bio: {{pro.bio}} </h5>
+          <h5>Goals: {{pro.goals}} </h5>
+          <h5>Interests: {{pro.interests}} </h5>
+        </div>
+      </li>
+    </ul>
+    <h1 *ngIf="isFetching"> Loading </h1>
+    <div class='alert alert-danger' *ngIf='isError'>
+      <h1> An Error Occurred: </h1>
+      <p> {{error}} </p>
+    </div>
+  </div>
+</div>

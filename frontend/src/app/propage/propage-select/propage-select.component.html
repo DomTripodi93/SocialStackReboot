@@ -1,0 +1,45 @@
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+      <p *ngIf="!propage">No Propages available!</p>     
+      
+      <ul class='list-group' *ngIf="propage && !isFetching">
+        <ul class=list-group *ngFor="let pro of propage">
+        <h3>{{pro.name}}</h3>
+        <li class='list-group-item'>
+          <h5 *ngIf="!editBio">Bio: {{pro.bio}} </h5>
+          <div *ngIf="myPropage && !editBio">
+            <button class='btn btn-primary' (click)="bioEdit()">Edit Bio</button>
+          </div>
+          <div *ngIf="myPropage && editBio">
+            <button class='btn btn-success' (click)="subBio()">Edit Bio</button>
+          </div>
+        </li>  
+        <li class='list-group-item'>
+          <h5 *ngIf="!editGoals">Goals: {{pro.goals}} </h5>
+          <div *ngIf="myPropage && !editGoals">
+            <button class='btn btn-primary' (click)="goalEdit()">Edit Goals</button>
+          </div>
+          <div *ngIf="myPropage && editGoals">
+            <button class='btn btn-success' (click)="subGoals()">Edit Goals</button>
+          </div>
+        </li>  
+        <li class='list-group-item'>
+          <h5 *ngIf="!editInterests">Interests: {{pro.interests}} </h5>
+          <div *ngIf="myPropage && !editInterests">
+            <button class='btn btn-primary' (click)="interestEdit()">Edit Interests</button>
+          </div>
+          <div *ngIf="myPropage && editInterests">
+            <button class='btn btn-success' (click)="subInterests()">Edit Interests</button>
+          </div>
+        </li>
+        </ul>
+      </ul>
+      <button *ngIf='myPropage' class='btn btn-primary' (click)="editPropage()">Edit Propage</button>
+      <h1 *ngIf="isFetching"> Loading </h1>
+      <div class='alert alert-danger' *ngIf='isError'>
+        <h1> An Error Occurred: </h1>
+        <p> {{error}} </p>
+      </div>
+    </div>
+  </div>
